@@ -1,33 +1,38 @@
 package ie.tudublin;
 
+import java.util.ArrayList;
+
+
 import processing.core.PApplet;
 import processing.data.Table;
 import processing.data.TableRow;
 
-import java.util.ArrayList;
-
 public class Gantt extends PApplet
 {	
-	public ArrayList<Task> tasks = new ArrayList<Task>();
+	public ArrayList<Task> task = new ArrayList<Task>();
 	
 	public void settings()
 	{
 		size(800, 600);
+		
 	}
 
 	public void loadTasks()
 	{
-		Table t = loadTable("tasks.csv", "header");
-			for(TableRow row:t.rows())
+		Table table = loadTable("tasks.csv", "header");
+			for(TableRow row:table.rows())
 			{
-				Task ta = new Task(row);
-				tasks.add(ta);
+				Task t = new Task(row);
+				task.add(t);
 			}
 	}
 
 	public void printTasks()
 	{
-		
+		for(Task t:task)
+		{
+			System.out.println(t);
+		}
 	}
 	
 	public void mousePressed()
@@ -44,6 +49,8 @@ public class Gantt extends PApplet
 	
 	public void setup() 
 	{
+		loadTasks();
+		printTasks();
 	}
 	
 	public void draw()
