@@ -15,6 +15,11 @@ public class Task {
         this.end = end;
     }
 
+    public String getTask() {
+        return task;
+    }
+    
+    
     public Task(TableRow tr)
     {
         this(tr.getString("task"), tr.getInt("start"), tr.getInt("end"));

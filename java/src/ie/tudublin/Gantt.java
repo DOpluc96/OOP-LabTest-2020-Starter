@@ -10,10 +10,21 @@ import processing.data.TableRow;
 public class Gantt extends PApplet
 {	
 	public ArrayList<Task> task = new ArrayList<Task>();
-	
+
+
+	float border;
+	float left;
+	float h;
+
+
+
 	public void settings()
 	{
 		size(800, 600);
+
+		border = width * 0.1f;
+		left = width * 0.05f;
+		h = height * 0.05f;
 		
 	}
 
@@ -36,7 +47,18 @@ public class Gantt extends PApplet
 	}
 
 	public void displayTasks()
+
 	{
+		for(int i = 0 ; i< task.size() ; i++){
+
+		Task t = task.get(i);
+
+		float y = map(i,0, task.size(), border, height - border);
+
+		fill(255);
+		textAlign(LEFT, CENTER);
+		text(t.getTask(), left + 10, y + (h/2));
+		}
 
 	}
 
@@ -60,5 +82,6 @@ public class Gantt extends PApplet
 	public void draw()
 	{			
 		background(0);
+		displayTasks();
 	}
 }
