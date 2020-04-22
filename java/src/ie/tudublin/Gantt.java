@@ -20,9 +20,9 @@ public class Gantt extends PApplet
 	public void loadTasks()
 	{
 		Table table = loadTable("tasks.csv", "header");
-			for(TableRow row:table.rows())
+			for(TableRow tr:table.rows())
 			{
-				Task t = new Task(row);
+				Task t = new Task(tr);
 				task.add(t);
 			}
 	}
@@ -34,6 +34,12 @@ public class Gantt extends PApplet
 			System.out.println(t);
 		}
 	}
+
+	public void displayTasks()
+	{
+
+	}
+
 	
 	public void mousePressed()
 	{
@@ -44,8 +50,6 @@ public class Gantt extends PApplet
 	{
 		println("Mouse dragged");
 	}
-
-	
 	
 	public void setup() 
 	{
