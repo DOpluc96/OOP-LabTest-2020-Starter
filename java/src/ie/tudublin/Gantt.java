@@ -1,6 +1,9 @@
 package ie.tudublin;
 
 import processing.core.PApplet;
+import processing.data.Table;
+import processing.data.TableRow;
+
 import java.util.ArrayList;
 
 public class Gantt extends PApplet
@@ -14,7 +17,12 @@ public class Gantt extends PApplet
 
 	public void loadTasks()
 	{
-		
+		Table t = loadTable("tasks.csv", "header");
+			for(TableRow row:t.rows())
+			{
+				Task ta = new Task(row);
+				tasks.add(ta);
+			}
 	}
 
 	public void printTasks()
